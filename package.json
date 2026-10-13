@@ -1,0 +1,42 @@
+{
+  "name": "@<scope>/fpga-riscv",
+  "version": "0.1.0",
+  "description": "A source xpm package with <your-description-here>",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/<user-id>/fpga-riscv.git"
+  },
+  "homepage": "https://github.com/<user-id>/fpga-riscv/",
+  "bugs": {
+    "url": "https://github.com/<user-id>/fpga-riscv/issues/"
+  },
+  "keywords": [
+    "xpack"
+  ],
+  "author": {
+    "name": "JouCritian",
+    "email": "zoujunyi869@gmail.com",
+    "url": "<author-url>"
+  },
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {},
+  "xpack": {
+    "minimumXpmRequired": "0.23.2",
+    "dependencies": {},
+    "devDependencies": {
+      "@xpack-dev-tools/riscv-none-elf-gcc": {
+        "specifier": "15.2.0-1.1",
+        "local": "link",
+        "platforms": "all"
+      }
+    },
+    "properties": {},
+    "actions": {},
+    "buildConfigurations": {}
+  }
+}

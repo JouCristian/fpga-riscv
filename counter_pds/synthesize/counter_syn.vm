@@ -1,0 +1,162 @@
+//
+// Generated (version 2022.2-SP1-Lite<build 132640>) at Tue Sep 22 23:04:37 2026
+//
+
+module counter
+(
+    input clk,
+    input enable,
+    input reset,
+    output [3:0] count
+);
+	// SDC constraint : (object clk) (id 1000) (clock clk) (1 : E:/Projects/fpga-riscv/counter_pds/counter_pds.fdc)
+    wire [3:0] N2;
+    wire nt_clk;
+    wire [3:0] nt_count;
+    wire nt_enable;
+    wire nt_reset;
+
+    GTP_GRS GRS_INST (
+            .GRS_N (1'b1));
+
+    GTP_LUT2 /* N2_sum1 */ #(
+            .INIT(4'b0110))
+        N2_sum1 (
+            .Z (N2[1]),
+            .I0 (nt_count[0]),
+            .I1 (nt_count[1]));
+	// LUT = (I0&~I1)|(~I0&I1) ;
+
+    GTP_LUT3 /* N2_sum2 */ #(
+            .INIT(8'b01111000))
+        N2_sum2 (
+            .Z (N2[2]),
+            .I0 (nt_count[0]),
+            .I1 (nt_count[1]),
+            .I2 (nt_count[2]));
+	// LUT = (~I1&I2)|(~I0&I2)|(I0&I1&~I2) ;
+
+    GTP_LUT4 /* N2_sum3 */ #(
+            .INIT(16'b0111111110000000))
+        N2_sum3 (
+            .Z (N2[3]),
+            .I0 (nt_count[0]),
+            .I1 (nt_count[1]),
+            .I2 (nt_count[2]),
+            .I3 (nt_count[3]));
+	// LUT = (~I2&I3)|(~I1&I3)|(~I0&I3)|(I0&I1&I2&~I3) ;
+
+    GTP_INBUF /* clk_ibuf */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        clk_ibuf (
+            .O (nt_clk),
+            .I (clk));
+	// ../../rtl/counter.v:4
+
+    GTP_DFF_RE /* \count[0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \count[0]  (
+            .Q (nt_count[0]),
+            .CE (nt_enable),
+            .CLK (nt_clk),
+            .D (N2[0]),
+            .R (nt_reset));
+	// ../../rtl/counter.v:9
+
+    GTP_DFF_RE /* \count[1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \count[1]  (
+            .Q (nt_count[1]),
+            .CE (nt_enable),
+            .CLK (nt_clk),
+            .D (N2[1]),
+            .R (nt_reset));
+	// ../../rtl/counter.v:9
+
+    GTP_DFF_RE /* \count[2]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \count[2]  (
+            .Q (nt_count[2]),
+            .CE (nt_enable),
+            .CLK (nt_clk),
+            .D (N2[2]),
+            .R (nt_reset));
+	// ../../rtl/counter.v:9
+
+    GTP_LUT1 /* \count[3:0]_inv  */ #(
+            .INIT(2'b01))
+        \count[3:0]_inv  (
+            .Z (N2[0]),
+            .I0 (nt_count[0]));
+	// LUT = ~I0 ;
+
+    GTP_DFF_RE /* \count[3]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \count[3]  (
+            .Q (nt_count[3]),
+            .CE (nt_enable),
+            .CLK (nt_clk),
+            .D (N2[3]),
+            .R (nt_reset));
+	// ../../rtl/counter.v:9
+
+    GTP_OUTBUF /* \count_obuf[0]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \count_obuf[0]  (
+            .O (count[0]),
+            .I (nt_count[0]));
+	// ../../rtl/counter.v:7
+
+    GTP_OUTBUF /* \count_obuf[1]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \count_obuf[1]  (
+            .O (count[1]),
+            .I (nt_count[1]));
+	// ../../rtl/counter.v:7
+
+    GTP_OUTBUF /* \count_obuf[2]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \count_obuf[2]  (
+            .O (count[2]),
+            .I (nt_count[2]));
+	// ../../rtl/counter.v:7
+
+    GTP_OUTBUF /* \count_obuf[3]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \count_obuf[3]  (
+            .O (count[3]),
+            .I (nt_count[3]));
+	// ../../rtl/counter.v:7
+
+    GTP_INBUF /* enable_ibuf */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        enable_ibuf (
+            .O (nt_enable),
+            .I (enable));
+	// ../../rtl/counter.v:6
+
+    GTP_INBUF /* reset_ibuf */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        reset_ibuf (
+            .O (nt_reset),
+            .I (reset));
+	// ../../rtl/counter.v:5
+
+
+endmodule
+

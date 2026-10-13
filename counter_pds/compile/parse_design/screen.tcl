@@ -1,0 +1,1 @@
+.rtl_screen -top_module {counter} -include_path {<E:/Projects/fpga-riscv/counter_pds>} -design_files {<E:/Projects/fpga-riscv/rtl/counter.v|work>}

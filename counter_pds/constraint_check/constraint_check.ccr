@@ -1,0 +1,43 @@
+##### Written on 2026/09/22 23:04:36 ###############################
+
+
+##### INFO ##################################################
+
+Current device : 
+	PGL12G-5FBG256
+
+Top Module : 
+	counter
+
+Constraint File(s) : 
+	E:/Projects/fpga-riscv/counter_pds/counter_pds.fdc
+
+##### SUMMARY ######################################################
+
+Found 0 error(s), 0 critical warning(s), 4 warning(s), out of 2 constraint(s)
+
+
+Inapplicable constraints(except overwritten constraints):
+********************************************
+
+
+Constraints with issues:
+********************************************
+
+
+Issues without commands:
+********************************************
+
+
+Unconstrained ports:
+********************************************
+
+W: ConstraintEditor-4019: Port Bus 'count' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'clk' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'enable' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'reset' unspecified I/O constraint.
+
+Constraints with matching wildcard expressions:
+********************************************
+
+
